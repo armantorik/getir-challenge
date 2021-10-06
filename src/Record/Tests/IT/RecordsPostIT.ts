@@ -7,25 +7,22 @@ let app;
 let recordsRoute;
 
 beforeAll(async () => {
-   recordsRoute = new RecordsRoute();
-   app = new App([recordsRoute]);
+  recordsRoute = new RecordsRoute();
+  app = new App([recordsRoute]);
 });
-
 
 describe('Testing Records Endpoint', () => {
   describe('[POST] /', () => {
-
     it('should retrieve records between given valid filters', async () => {
-
       // given
       const body = {
-        startDate:'2015-11-21',
-        endDate:'2200-11-21',
-        minCount:200,
-        maxCount:22322
+        startDate: '2015-11-21',
+        endDate: '2200-11-21',
+        minCount: 200,
+        maxCount: 22322,
       };
-      const startDateFormatted = DateTime.fromISO(body.startDate)
-      const endDateFormatted = DateTime.fromISO(body.endDate)
+      const startDateFormatted = DateTime.fromISO(body.startDate);
+      const endDateFormatted = DateTime.fromISO(body.endDate);
 
       // when
 
@@ -67,7 +64,6 @@ describe('Testing Records Endpoint', () => {
   });
 
   it('should throw Record Not Found Exception when no document matching given filters', async () => {
-
     // given
     const body = {
       startDate: '2000-11-21',

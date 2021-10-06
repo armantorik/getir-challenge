@@ -1,7 +1,7 @@
 import { Record } from '../Interfaces/RecordsInterface';
 import RecordModel from '../Models/RecordsModel';
 import RecordsPostRequest from '../Controllers/Requests/RecordsPostRequest';
-import { MongoException } from "../Exceptions/MongoException";
+import { MongoException } from '../Exceptions/MongoException';
 
 class RecordsRepository {
   public recordModel = RecordModel;

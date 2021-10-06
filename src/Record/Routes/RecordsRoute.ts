@@ -4,9 +4,7 @@ import { Routes } from '../Interfaces/RoutesInterface';
 import { createValidator } from 'express-joi-validation';
 import { RecordsPostValidationSchema } from '../Controllers/Requests/Validations/RecordsPostValidation';
 
-
 export default class RecordsRoute implements Routes {
-
   public validator = createValidator();
   public path = '/records';
   public router = Router();

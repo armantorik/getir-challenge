@@ -5,12 +5,11 @@
   "author": "Arman Torikoglu",
   "license": "ISC",
   "scripts": {
-    "start": "npm run build && cross-env NODE_ENV=production node dist/server.js",
+    "start": "npm run build && cross-env NODE_ENV=production node dist/src/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",
-    "build": "tsc && npx tsc-alias",
+    "build": "tsc",
     "test": "jest --forceExit",
     "lint": "eslint --ignore-path .gitignore --ext .ts src/",
-    "lint:fix": "npm run lint --fix",
     "deploy:dev": "pm2 start ecosystem.config.js --only dev"
   },
   "dependencies": {

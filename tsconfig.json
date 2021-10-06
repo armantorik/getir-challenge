@@ -20,18 +20,6 @@
     "resolveJsonModule": true,
     "importHelpers": true,
     "baseUrl": "src",
-    "paths": {
-      "@*": ["*"],
-      "@controllers/*": ["Record/Controllers/*"],
-      "@databases/*": ["Record/Configuration/Databases/*"],
-      "@repository/*": ["Record/Repository/*"],
-      "@exceptions/*": ["Record/Exceptions/*"],
-      "@interfaces/*": ["Record/Interfaces/*"],
-      "@middlewares/*": ["Record/Middlewares/*"],
-      "@models/*": ["Record/Models/*"],
-      "@routes/*": ["Record/Routes/*"],
-      "@services/*": ["Record/Services/*"]
-    }
   },
   "include": ["src/**/*.ts", "src/**/*.json", ".env"],
   "exclude": ["node_modules"]
