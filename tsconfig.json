@@ -1,0 +1,38 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": ["es2017", "esnext.asynciterable"],
+    "typeRoots": ["node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "pretty": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "allowJs": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "baseUrl": "src",
+    "paths": {
+      "@*": ["*"],
+      "@controllers/*": ["Record/Controllers/*"],
+      "@databases/*": ["Record/Configuration/Databases/*"],
+      "@repository/*": ["Record/Repository/*"],
+      "@exceptions/*": ["Record/Exceptions/*"],
+      "@interfaces/*": ["Record/Interfaces/*"],
+      "@middlewares/*": ["Record/Middlewares/*"],
+      "@models/*": ["Record/Models/*"],
+      "@routes/*": ["Record/Routes/*"],
+      "@services/*": ["Record/Services/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.json", ".env"],
+  "exclude": ["node_modules"]
+}
