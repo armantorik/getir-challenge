@@ -8,7 +8,7 @@ import { RecordsPostValidationSchema } from '../Controllers/Requests/Validations
 export default class RecordsRoute implements Routes {
 
   public validator = createValidator();
-  public path = '/';
+  public path = '/records';
   public router = Router();
   public recordsController = new RecordsController();
 

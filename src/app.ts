@@ -1,4 +1,3 @@
-
 process.env['NODE_CONFIG_DIR'] = __dirname + '/Configurations';
 
 import compression from 'compression';
@@ -6,10 +5,10 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
-import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { dbConnection } from './Record/Configurations/Databases';
 import { Routes } from './Record/Interfaces/RoutesInterface';
+import swaggerDoc from '../swagger.json'
 
 class App {
   public app: express.Application;
@@ -60,19 +59,7 @@ class App {
   }
 
   private initializeSwagger() {
-    const options = {
-      swaggerDefinition: {
-        info: {
-          title: 'REST API',
-          version: '1.0.0',
-          description: 'Example docs',
-        },
-      },
-      apis: ['swagger.yaml'],
-    };
-
-    const specs = swaggerJSDoc(options);
-    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+    this.app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
   }
   public async closeDB() {
     await mongoose.connection.close();

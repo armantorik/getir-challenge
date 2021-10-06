@@ -120,3 +120,5 @@ dist
 # Jest hidden files
 .jest/
 setEnvVars.js
+
+dockerenv/

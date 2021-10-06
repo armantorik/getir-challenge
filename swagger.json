@@ -1,0 +1,140 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Getir Challenge API",
+    "description": "This API is built for Getir's challenge. The only request which is a POST request is to retrieve records from the database with given filters.",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "records",
+      "description": "records API"
+    }
+  ],
+  "paths": {
+    "/records": {
+      "post": {
+        "tags": [
+          "records"
+        ],
+        "summary": "Find records matching given filters; startDate, endDate, minCount, maxCount",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "filters",
+            "required": true,
+            "description": "Results will be records that later than \"startDate\" and earlier than \"endDate\", at the same time, totalCount should be bigger than minCount and smaller than maxCount",
+            "schema": {
+              "$ref": "#/definitions/RecordsFilterByDataAndCountParams"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RecordsFilterByDataAndCountResponse"
+            }
+          },
+          "404": {
+            "description": "Records Not Found!",
+            "schema": {
+              "$ref": "#/definitions/RecordsFilterByDataAndCountNotFoundError"
+            }
+          },
+          "500": {
+            "description": "DB Server Error!",
+            "schema": {
+              "$ref": "#/definitions/RecordsFilterByDataAndCountMongoError"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "RecordsFilterByDataAndCountParams": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date",
+          "default": "2007-10-10"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date",
+          "default": "2017-10-10"
+        },
+        "minCount": {
+          "type": "integer",
+          "default": 500
+        },
+        "maxCount": {
+          "type": "integer",
+          "default": 1500
+        }
+      }
+    },
+    "RecordsFilterByDataAndCountResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "default": 0
+        },
+        "msg": {
+          "type": "string",
+          "default": "Success"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date"
+              },
+              "totalCount": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "RecordsFilterByDataAndCountNotFoundError": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "default": 1
+        },
+        "msg": {
+          "type": "string",
+          "default": "Record Not Found!"
+        }
+      }
+    },
+    "RecordsFilterByDataAndCountMongoError": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "default": 2
+        },
+        "msg": {
+          "type": "string",
+          "default": "Something wrong with MongoDB server!"
+        }
+      }
+    }
+  },
+  "schemes": [
+    "http"
+  ]
+}
