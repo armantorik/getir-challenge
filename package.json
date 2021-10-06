@@ -1,6 +1,6 @@
 {
   "name": "getir-challenge",
-  "version": "1y.0.0",
+  "version": "1.0.0",
   "description": "TypeScript + Mongoose + MongoDB + Express API Server",
   "author": "Arman Torikoglu",
   "license": "ISC",
