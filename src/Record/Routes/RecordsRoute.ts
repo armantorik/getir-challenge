@@ -4,9 +4,10 @@ import { Routes } from '../Interfaces/RoutesInterface';
 import { createValidator } from 'express-joi-validation';
 import { RecordsPostValidationSchema } from '../Controllers/Requests/Validations/RecordsPostValidation';
 
-const validator = createValidator({});
 
-class RecordsRoute implements Routes {
+export default class RecordsRoute implements Routes {
+
+  public validator = createValidator();
   public path = '/';
   public router = Router();
   public recordsController = new RecordsController();
@@ -16,8 +17,6 @@ class RecordsRoute implements Routes {
   }
 
   private initializeRoutes() {
-    this.router.post(`${this.path}`, validator.body(RecordsPostValidationSchema), this.recordsController.findRecords);
+    this.router.post(`${this.path}`, this.validator.body(RecordsPostValidationSchema), this.recordsController.findRecords);
   }
 }
-
-export default RecordsRoute;

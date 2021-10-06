@@ -1,10 +1,11 @@
+
 process.env['NODE_CONFIG_DIR'] = __dirname + '/Configurations';
 
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import helmet from 'helmet';
-import { connect, set, disconnect } from 'mongoose';
+import mongoose from 'mongoose';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { dbConnection } from './Record/Configurations/Databases';
@@ -14,6 +15,7 @@ class App {
   public app: express.Application;
   public port: string | number;
   public env: string;
+  public dbConnection;
 
   constructor(routes: Routes[]) {
     this.app = express();
@@ -39,12 +41,8 @@ class App {
     return this.app;
   }
 
-  private connectToDatabase() {
-    if (this.env !== 'production') {
-      set('debug', true);
-    }
-
-    connect(dbConnection.url, dbConnection.options);
+  private async connectToDatabase() {
+    this.dbConnection =  await mongoose.connect(dbConnection.url, dbConnection.options);
   }
 
   private initializeMiddlewares() {
@@ -76,7 +74,9 @@ class App {
     const specs = swaggerJSDoc(options);
     this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
   }
-
+  public async closeDB() {
+    await mongoose.connection.close();
+  }
 }
 
 export default App;

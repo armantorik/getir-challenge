@@ -5,14 +5,18 @@ const recordSchema: Schema = new Schema({
   key: {
     type: String,
     required: true,
-    unique: true,
+    //unique: true,
+  },
+  value: {
+    type: String,
+    required: true,
   },
   createdAt: {
     type: Date,
     required: true,
   },
-  totalCount: {
-    type: Number,
+  counts: {
+    type: Array,
     required: true,
   },
 });

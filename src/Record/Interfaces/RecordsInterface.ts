@@ -1,6 +1,7 @@
 export interface Record {
+  totalCount: number;
   _id: string;
   key: string;
   createdAt: Date;
-  totalCount: number;
+  counts: Array<number>;
 }
