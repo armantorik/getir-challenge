@@ -28,16 +28,22 @@ npm i
 *Note: MongoDB should be installed and running*
 
 [Install MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
+
 <p> After running MongoDB, the connection string should be placed to .env file </p>
-# Example:
+
+### Example:
+
+(connection string = 'mongodb://localhost:27017')
+
   From root of project:
   ```
   touch .env
   echo 'mongodb://localhost:27017' > .env
   ```
-For running application: 
-`npm run start` for prod
-`npm run dev` for dev
+
+## Run the application: 
+
+`npm run start` for prod or `npm run dev` for dev
 
 
 # API Guide:
