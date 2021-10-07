@@ -1,4 +1,5 @@
 ---
+public endpoint: ec2-3-18-247-85.us-east-2.compute.amazonaws.com
 title: Getir Challenge API v1.0.0
 language_tabs:
   - Node.js: Typescript
