@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "/"
+      "url": "http://ec2-3-18-247-85.us-east-2.compute.amazonaws.com/"
     }
   ],
   "tags": [
