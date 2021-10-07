@@ -1,9 +1,8 @@
 ---
 title: Getir Challenge API v1.0.0
+public endpoint: ec2-3-18-247-85.us-east-2.compute.amazonaws.com (post /records)
 language_tabs:
-  - node: Node
-toc_footers: []
-includes: []
+  - Node.js: Typescript
 search: true
 highlight_theme: darkula
 headingLevel: 2
@@ -18,6 +17,36 @@ headingLevel: 2
 
 This API is built for Getir's challenge. The only request which is a POST request is to retrieve records from the database with given filters.
 
+# Installation Guide:
+
+From terminal:
+```
+git clone https://github.com/armantorik/getir-challenge.git
+cd getir-challenge
+npm i
+```
+*Note: MongoDB should be installed and running*
+
+[Install MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
+
+<p> After running MongoDB, the connection string should be placed to .env file </p>
+
+### Example:
+
+(connection string = 'mongodb://localhost:27017')
+
+  From root of project:
+  ```
+  touch .env
+  echo 'mongodb://localhost:27017' > .env
+  ```
+
+## Run the application: 
+
+`npm run start` for prod or `npm run dev` for dev
+
+
+# API Guide:
 <h1 id="getir-challenge-api-records">records</h1>
 
 records API
