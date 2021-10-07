@@ -17,9 +17,30 @@ headingLevel: 2
 
 This API is built for Getir's challenge. The only request which is a POST request is to retrieve records from the database with given filters.
 
-## Installation guide:
+# Installation Guide:
+
+From terminal:
+```
+git clone https://github.com/armantorik/getir-challenge.git
+cd getir-challenge
+npm i
+```
+*Note: MongoDB should be installed and running*
+
+[Install MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
+<p> After running MongoDB, the connection string should be placed to .env file </p>
+# Example:
+  From root of project:
+  ```
+  touch .env
+  echo 'mongodb://localhost:27017' > .env
+  ```
+For running application: 
+`npm run start` for prod
+`npm run dev` for dev
 
 
+# API Guide:
 <h1 id="getir-challenge-api-records">records</h1>
 
 records API
