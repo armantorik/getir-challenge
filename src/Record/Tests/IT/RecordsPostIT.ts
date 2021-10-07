@@ -6,9 +6,12 @@ import { DateTime } from 'luxon';
 let app;
 let recordsRoute;
 
-beforeAll(async () => {
+beforeEach(async () => {
   recordsRoute = new RecordsRoute();
   app = new App([recordsRoute]);
+});
+afterEach(async () => {
+  await app.disconnectFromDatabase();
 });
 
 describe('Testing Records Endpoint', () => {

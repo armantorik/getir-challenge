@@ -7,18 +7,19 @@ import mongoose from 'mongoose';
 import swaggerUi from 'swagger-ui-express';
 import { dbConnection } from './Record/Configurations/Databases';
 import { Routes } from './Record/Interfaces/RoutesInterface';
-import swaggerDoc from '../swagger.json';
+import swaggerDoc from '../openapi.json';
 
 class App {
   public app: express.Application;
   public port: string | number;
   public env: string;
-  public dbConnection;
+  private mongoose;
 
   constructor(routes: Routes[]) {
     this.app = express();
     this.port = process.env.PORT || 3000;
     this.env = process.env.NODE_ENV || 'development';
+    this.mongoose = mongoose;
 
     this.connectToDatabase();
     this.initializeMiddlewares();
@@ -40,7 +41,7 @@ class App {
   }
 
   private async connectToDatabase() {
-    this.dbConnection = await mongoose.connect(dbConnection.url, dbConnection.options);
+    await this.mongoose.connect(dbConnection.url, dbConnection.options);
   }
 
   private initializeMiddlewares() {
@@ -58,6 +59,10 @@ class App {
 
   private initializeSwagger() {
     this.app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+  }
+
+  public async disconnectFromDatabase() {
+    await this.mongoose.connection.close();
   }
 }
 
