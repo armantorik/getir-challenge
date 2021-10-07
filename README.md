@@ -1,9 +1,7 @@
 ---
 title: Getir Challenge API v1.0.0
 language_tabs:
-  - node: Node
-toc_footers: []
-includes: []
+  - Node.js: Typescript
 search: true
 highlight_theme: darkula
 headingLevel: 2
