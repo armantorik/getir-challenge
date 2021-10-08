@@ -5,6 +5,9 @@
     "description": "This API is built for Getir's challenge. The only request which is a POST request is to retrieve records from the database with given filters.",
     "version": "1.0.0"
   },
+  "schemes": [
+    "http"
+  ],
   "tags": [
     {
       "name": "records",
@@ -133,8 +136,5 @@
         }
       }
     }
-  },
-  "schemes": [
-    "http"
-  ]
+  }
 }
