@@ -21,10 +21,15 @@ class RecordsRepository {
             totalCount: { $sum: '$counts' },
           },
         },
+        {
+          $match: {
+            totalCount: { $gte: minCount, $lte: maxCount },
+          },
+        },
         { $project: { counts: 0, value: 0, _id: 0 } }, // Return all but the specified fields
       ]);
 
-      return records.filter(elmnt => elmnt.totalCount > minCount && elmnt.totalCount < maxCount);
+      return records;
 
     } catch (error) {
       throw new MongoException();
